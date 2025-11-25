@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tunis Khair - End Poverty in Tunisia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: white;
+            color: #333;
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-donate-btn {
+            background: #c41e3a;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-donate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(196, 30, 58, 0.4);
+            background: #a01830;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(196, 30, 58, 0.85), rgba(230, 57, 70, 0.85)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: white;
+            color: #c41e3a;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #c41e3a;
+            margin-bottom: 3rem;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #c41e3a 0%, #e63946 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(196, 30, 58, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+        }
+
+        .donation-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .donation-card {
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .donation-card:hover {
+            border-color: #c41e3a;
+            box-shadow: 0 5px 20px rgba(196, 30, 58, 0.1);
+        }
+
+        .donation-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .donation-card h3 {
+            color: #c41e3a;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .donation-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .donate-button {
+            background: #c41e3a;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .donate-button:hover {
+            background: #a01830;
+        }
+
+        .how-it-works {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            background: #c41e3a;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .testimonials {
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #c41e3a;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #c41e3a;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #c41e3a;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="Tunis Khair Logo">
+            </div>
+            <a href="#donate" class="nav-donate-btn">Donate Now</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Together We Can End Poverty in Tunisia</h1>
+        <p>Join Tunis Khair in our mission to support vulnerable families across Tunisia. Every donation makes a real difference.</p>
+        <a href="#donate" class="cta-button">Donate Now</a>
+    </section>
+
+    <section class="container" id="impact">
+        <h2 class="section-title">Our Impact Since 2025</h2>
+        <div class="impact-stats">
+            <div class="stat-card">
+                <div class="stat-number">1,250+</div>
+                <div class="stat-label">Families Supported</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500K+</div>
+                <div class="stat-label">TND Distributed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24</div>
+                <div class="stat-label">Governorates Reached</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5,000+</div>
+                <div class="stat-label">Lives Changed</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="donate">
+        <h2 class="section-title">Ways to Help</h2>
+        <div class="donation-types">
+            <div class="donation-card">
+                <div class="donation-icon">🍞</div>
+                <h3>Food Support</h3>
+                <p>Provide essential food packages to families in need across Tunisia</p>
+                <button class="donate-button" onclick="alert('Redirecting to food donation form...')">Donate Food</button>
+            </div>
+            <div class="donation-card">
+                <div class="donation-icon">🏠</div>
+                <h3>Housing Assistance</h3>
+                <p>Help families secure safe and stable housing conditions</p>
+                <button class="donate-button" onclick="alert('Redirecting to housing donation form...')">Support Housing</button>
+            </div>
+            <div class="donation-card">
+                <div class="donation-icon">📚</div>
+                <h3>Education Support</h3>
+                <p>Give children access to education and school supplies</p>
+                <button class="donate-button" onclick="alert('Redirecting to education donation form...')">Fund Education</button>
+            </div>
+            <div class="donation-card">
+                <div class="donation-icon">💊</div>
+                <h3>Healthcare Aid</h3>
+                <p>Provide medical care and medications to those who need it most</p>
+                <button class="donate-button" onclick="alert('Redirecting to healthcare donation form...')">Give Healthcare</button>
+            </div>
+            <div class="donation-card">
+                <div class="donation-icon">💼</div>
+                <h3>Job Training</h3>
+                <p>Empower families through skills training and employment programs</p>
+                <button class="donate-button" onclick="alert('Redirecting to training donation form...')">Support Training</button>
+            </div>
+            <div class="donation-card">
+                <div class="donation-icon">💰</div>
+                <h3>General Fund</h3>
+                <p>Your donation goes where it's needed most</p>
+                <button class="donate-button" onclick="alert('Redirecting to general donation form...')">Donate Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Choose Your Cause</h3>
+                <p>Select the type of support you want to provide to families in need</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Make Your Donation</h3>
+                <p>Contribute securely through our trusted payment system</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>We Deliver Help</h3>
+                <p>Our team identifies and supports families across Tunisia</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Track Your Impact</h3>
+                <p>Receive updates on how your donation is making a difference</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container testimonials">
+        <h2 class="section-title">Stories of Hope</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p class="testimonial-text">"Tunis Khair helped my family during our hardest time. Thanks to their support, my children can now go to school with full bellies."</p>
+                <p class="testimonial-author">- Fatma, Tunis</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"The job training program gave me skills to start my own small business. I can now support my family with dignity."</p>
+                <p class="testimonial-author">- Mohammed, Sfax</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"When my husband fell ill, Tunis Khair provided medical assistance and food support. They gave us hope when we had none."</p>
+                <p class="testimonial-author">- Aicha, Kairouan</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Tunis Khair</h3>
+                <p>Working towards ending poverty in Tunisia since 2025. Every contribution creates lasting change.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#about">About Us</a>
+                <a href="#donate">Donate</a>
+                <a href="#impact">Our Impact</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📧 info@tuniskhair.tn</p>
+                <p>📱 +216 XX XXX XXX</p>
+                <p>📍 Tunis, Tunisia</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Tunis Khair - NO POVERTY GOAL | All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
