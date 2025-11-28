@@ -206,6 +206,172 @@
             background: #a01830;
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #c41e3a 0%, #e63946 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #c41e3a;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .amount-btn {
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .amount-btn:hover {
+            border-color: #c41e3a;
+            background: #fff5f6;
+        }
+
+        .amount-btn.selected {
+            border-color: #c41e3a;
+            background: #c41e3a;
+            color: white;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #c41e3a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #a01830;
+        }
+
+        .required {
+            color: #c41e3a;
+        }
+
         .how-it-works {
             background: #f8f9fa;
             padding: 4rem 2rem;
@@ -370,37 +536,37 @@
                 <div class="donation-icon">🍞</div>
                 <h3>Food Support</h3>
                 <p>Provide essential food packages to families in need across Tunisia</p>
-                <button class="donate-button" onclick="alert('Redirecting to food donation form...')">Donate Food</button>
+                <button class="donate-button" onclick="openModal('food')">Donate Food</button>
             </div>
             <div class="donation-card">
                 <div class="donation-icon">🏠</div>
                 <h3>Housing Assistance</h3>
                 <p>Help families secure safe and stable housing conditions</p>
-                <button class="donate-button" onclick="alert('Redirecting to housing donation form...')">Support Housing</button>
+                <button class="donate-button" onclick="openModal('housing')">Support Housing</button>
             </div>
             <div class="donation-card">
                 <div class="donation-icon">📚</div>
                 <h3>Education Support</h3>
                 <p>Give children access to education and school supplies</p>
-                <button class="donate-button" onclick="alert('Redirecting to education donation form...')">Fund Education</button>
+                <button class="donate-button" onclick="openModal('education')">Fund Education</button>
             </div>
             <div class="donation-card">
                 <div class="donation-icon">💊</div>
                 <h3>Healthcare Aid</h3>
                 <p>Provide medical care and medications to those who need it most</p>
-                <button class="donate-button" onclick="alert('Redirecting to healthcare donation form...')">Give Healthcare</button>
+                <button class="donate-button" onclick="openModal('healthcare')">Give Healthcare</button>
             </div>
             <div class="donation-card">
                 <div class="donation-icon">💼</div>
                 <h3>Job Training</h3>
                 <p>Empower families through skills training and employment programs</p>
-                <button class="donate-button" onclick="alert('Redirecting to training donation form...')">Support Training</button>
+                <button class="donate-button" onclick="openModal('training')">Support Training</button>
             </div>
             <div class="donation-card">
                 <div class="donation-icon">💰</div>
                 <h3>General Fund</h3>
                 <p>Your donation goes where it's needed most</p>
-                <button class="donate-button" onclick="alert('Redirecting to general donation form...')">Donate Now</button>
+                <button class="donate-button" onclick="openModal('general')">Donate Now</button>
             </div>
         </div>
     </section>
@@ -480,5 +646,181 @@
             <p>&copy; 2025 Tunis Khair - NO POVERTY GOAL | All Rights Reserved</p>
         </div>
     </footer>
+
+    <!-- Donation Modal -->
+    <div id="donationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Make a Donation</h2>
+                <button class="close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Select Amount (TND) <span class="required">*</span></label>
+                    <div class="donation-amounts">
+                        <button class="amount-btn" onclick="selectAmount(50)">50 TND</button>
+                        <button class="amount-btn" onclick="selectAmount(100)">100 TND</button>
+                        <button class="amount-btn" onclick="selectAmount(200)">200 TND</button>
+                        <button class="amount-btn" onclick="selectAmount(500)">500 TND</button>
+                        <button class="amount-btn" onclick="selectAmount(1000)">1000 TND</button>
+                        <button class="amount-btn" onclick="selectAmount(0)">Custom</button>
+                    </div>
+                    <input type="number" id="customAmount" placeholder="Enter custom amount" min="10" style="margin-top: 0.5rem;">
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" placeholder="your.email@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" placeholder="+216 XX XXX XXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="governorate">Governorate</label>
+                    <select id="governorate">
+                        <option value="">Select your governorate</option>
+                        <option value="tunis">Tunis</option>
+                        <option value="ariana">Ariana</option>
+                        <option value="ben-arous">Ben Arous</option>
+                        <option value="manouba">Manouba</option>
+                        <option value="nabeul">Nabeul</option>
+                        <option value="zaghouan">Zaghouan</option>
+                        <option value="bizerte">Bizerte</option>
+                        <option value="beja">Béja</option>
+                        <option value="jendouba">Jendouba</option>
+                        <option value="kef">Le Kef</option>
+                        <option value="siliana">Siliana</option>
+                        <option value="sousse">Sousse</option>
+                        <option value="monastir">Monastir</option>
+                        <option value="mahdia">Mahdia</option>
+                        <option value="sfax">Sfax</option>
+                        <option value="kairouan">Kairouan</option>
+                        <option value="kasserine">Kasserine</option>
+                        <option value="sidi-bouzid">Sidi Bouzid</option>
+                        <option value="gabes">Gabès</option>
+                        <option value="medenine">Médenine</option>
+                        <option value="tataouine">Tataouine</option>
+                        <option value="gafsa">Gafsa</option>
+                        <option value="tozeur">Tozeur</option>
+                        <option value="kebili">Kébili</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method <span class="required">*</span></label>
+                    <select id="paymentMethod" required>
+                        <option value="">Select payment method</option>
+                        <option value="credit-card">Credit/Debit Card</option>
+                        <option value="bank-transfer">Bank Transfer</option>
+                        <option value="mobile-money">Mobile Money (D17, Sobflous)</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" placeholder="Leave a message of hope..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" onclick="submitDonation()">Complete Donation</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentDonationType = '';
+        let selectedAmount = 0;
+
+        const donationTitles = {
+            'food': '🍞 Food Support Donation',
+            'housing': '🏠 Housing Assistance Donation',
+            'education': '📚 Education Support Donation',
+            'healthcare': '💊 Healthcare Aid Donation',
+            'training': '💼 Job Training Donation',
+            'general': '💰 General Fund Donation'
+        };
+
+        function openModal(type) {
+            currentDonationType = type;
+            document.getElementById('modalTitle').textContent = donationTitles[type];
+            document.getElementById('donationModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('donationModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            resetForm();
+        }
+
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+            
+            if (amount === 0) {
+                document.getElementById('customAmount').focus();
+            } else {
+                document.getElementById('customAmount').value = '';
+            }
+        }
+
+        function submitDonation() {
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            const customAmount = document.getElementById('customAmount').value;
+            
+            const finalAmount = selectedAmount === 0 ? customAmount : selectedAmount;
+
+            if (!fullName || !email || !phone || !paymentMethod || !finalAmount) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+
+            if (finalAmount < 10) {
+                alert('Minimum donation amount is 10 TND');
+                return;
+            }
+
+            // Here you would normally send the data to your backend
+            alert(`Thank you ${fullName}!\n\nYour donation of ${finalAmount} TND for ${currentDonationType} support will make a real difference.\n\nYou will receive a confirmation email at ${email}`);
+            
+            closeModal();
+        }
+
+        function resetForm() {
+            document.getElementById('fullName').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('governorate').value = '';
+            document.getElementById('paymentMethod').value = '';
+            document.getElementById('message').value = '';
+            document.getElementById('customAmount').value = '';
+            selectedAmount = 0;
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('donationModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
